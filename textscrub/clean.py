@@ -1,4 +1,4 @@
-from unicodedata
+import unicodedata
 import regex as re
 import sys
 
