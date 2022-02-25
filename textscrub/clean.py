@@ -47,3 +47,31 @@ def remove_spaces(text):
 
     return text
 
+def remove_html_tags(text):
+    """
+    Remove all html tags from the raw text
+    Args:
+        text(str) -- raw text
+    REturns:
+        text(str) -- text clean from html tags
+    """
+
+    # create regex for html tags
+    html_re = re.compile('<.*?>')
+    # remove html tags
+    text = re.sub(html_re, '', text)
+
+    return text
+
+def remove_hyperlinks(text):
+    """
+    Remove all hyperlinks and URLs from the raw text
+    Args:
+        text(str) -- raw text
+    Returns:
+        text(str) -- text clean from html tags
+    """
+    text = re.sub(r'https?://\S+', '', text)
+
+    return text
+
