@@ -2,13 +2,13 @@ import unicodedata
 import regex as re
 import sys
 
-def remove_non_ascii(text):
+def remove_glyphs(text):
     """
-    Remove all the non-ascii characters, latin and non-printable characters from the raw text
+    Remove all the non-ascii, non-latin and non-printable characters from the raw text
     Args:
         text(str) -- raw text
     Returns:
-        text(str) -- text clean from non ascii characters
+        text(str) -- text clean from non ascii, non-latin and non-printable characters
     """
 
     # remove non - ascii characters
@@ -27,7 +27,7 @@ def remove_non_ascii(text):
     # remove non-printable characters
     text = control_char_re.sub('', text)
 
-    # remove latin characters
+    # remove non-latin characters
     text = re.sub(r'[^\p{Latin}]', '', text)
 
     return text
