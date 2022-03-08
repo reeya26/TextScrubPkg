@@ -2,6 +2,11 @@ import unicodedata
 import regex as re
 import sys
 
+import numpy as np
+import pandas as pd
+import Levenshtein
+from sklearn.cluster import dbscan
+
 def remove_glyphs(text):
     """
     Remove all the non-ascii, non-latin and non-printable characters from the raw text
@@ -69,9 +74,42 @@ def remove_hyperlinks(text):
     Args:
         text(str) -- raw text
     Returns:
-        text(str) -- text clean from html tags
+        text(str) -- text clean from hyperlinks
     """
     text = re.sub(r'https?://\S+', '', text)
 
     return text
 
+def homog_lev(obj, eps=1, min_samples=2):
+    """
+    Remove all hyperlinks and URLs from the raw text
+    Args:
+        dataframe(str) -- almost similar text
+    Returns:
+        dataframe(str) -- text clean from multiple instances of same value
+    """
+    name = obj.name
+
+    original = obj.copy()
+    obj = obj.drop_duplicates()
+    data = obj.tolist()
+
+    def lev_metric(x, y):
+        i, j = int(x[0]), int(y[0])
+        return Levenshtein.distance(data[i], data[j])
+
+    X = np.arange(len(data)).reshape(-1, 1)
+    labels = dbscan(X, metric=lev_metric, eps=eps, min_samples=min_samples)[1]
+
+    x = pd.DataFrame({'A': obj.reset_index(drop=True), 'B': pd.Series(labels)})
+    y = x.drop_duplicates('B')
+    y = y[~(y.B==-1)]
+    y.columns = ['C', 'B']
+    x = x.merge(y, on='B', how='left')
+    x['C'] = np.where(x.C.isnull(), x.A, x.C)
+
+    results = pd.DataFrame({'A': original})
+    results = results.merge(x[['A', 'C']], on='A', how='left')
+    out = results.C.rename(name)
+        
+    return out
