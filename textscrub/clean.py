@@ -57,7 +57,7 @@ def remove_html_tags(text):
     """
 
     # create regex for html tags
-    html_re = re.compile('<.*?>')
+    html_re = re.compile(r'<.*?>')
     # remove html tags
     text = re.sub(html_re, '', text)
 
