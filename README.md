@@ -4,6 +4,7 @@ A text cleaning package which also works on fuzzy logic
 
 Testing a few things.
 
+```
 TextScrubPkg/
   |- README.md
   |- textscrub/
@@ -22,3 +23,4 @@ TextScrubPkg/
   |- setup.py
   |- requirements.txt
   |- LICENSE
+```
