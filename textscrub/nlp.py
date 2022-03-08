@@ -1,6 +1,5 @@
 
 #NLP Tasks for Software Design for Data Science
-import Levenshtein
 import nltk
 
 #Libraries for Work Tokenization
