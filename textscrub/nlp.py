@@ -102,8 +102,10 @@ def remove_emoji(string, op):
   
   if(op == "Remove"):
     return emoji_pattern.sub(r'', string)
+   
   else:
-    return emoji.demojize(string)
+    ans = emoji.demojize(string)
+    return ans.replace("_", " ")
 
 
 def lemmat(text):
