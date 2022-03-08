@@ -1,5 +1,6 @@
 
 #NLP Tasks for Software Design for Data Science
+import Levenshtein
 import nltk
 
 #Libraries for Work Tokenization
@@ -21,7 +22,12 @@ from emoji.core import demojize
 import re
 import emoji
 
-import emoticons
+#Libraries for Emoji
+import json
+import sys,os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+
 
 """
     Data Preprocessing Required for NLP Tasks
@@ -44,6 +50,8 @@ def tokenizing(text):
 	#Tokenization 
 
   tokens = word_tokenize(text)
+
+  #print(Levenshtein.distance("Hi","Hie"))
   return tokens
 
 
@@ -92,6 +100,8 @@ def remove_emoji(text, op):
   Returns the string without the emojis and also the
   string with text translation of the emoji as a tuple
   """
+
+  #Identifying Emojis present in Data
   emoji_pattern = re.compile("["
                            u"\U0001F600-\U0001F64F" # emoticons
                            u"\U0001F300-\U0001F5FF" # symbols & pictographs
@@ -101,7 +111,12 @@ def remove_emoji(text, op):
                            u"\U000024C2-\U0001F251"
                            "]+", flags=re.UNICODE)
 
-  emoticon_pattern1 = re.compile(u'(' + u'|'.join(k for k in emoticons.emoticons_dict) + u')')
+  #Identifying Emoticons present in Data
+  with open('emoticons_dataset.txt') as f:
+    data = f.read()
+  emoticons = json.loads(data)
+
+  emoticon_pattern1 = re.compile(u'(' + u'|'.join(k for k in emoticons) + u')')
   ans = emoticon_pattern1.sub(r'', text)
 
 

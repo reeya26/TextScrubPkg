@@ -7,6 +7,7 @@ import unittest
 
 class TestingNLPCleaning(unittest.TestCase):
 
+
     def test_convert_emoji(self):
 
         a = 'I’m convinced that😭😭😭 is the most :)expressive emoji combo '
