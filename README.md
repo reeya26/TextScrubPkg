@@ -31,4 +31,8 @@ TextScrubPkg/
 - **Analysts**: Requiring quick data-cleaning functionalities, and who are not technically adept
 - **Data Scientists**: Programmers wanting to clean web-scrapped data. Focus on experimenting with model-building instead of scrubbing
 
+## How to Use
 
+To test the functionalities of the package, refer to the Python notebook
+
+## Examples
