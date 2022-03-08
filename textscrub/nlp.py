@@ -11,7 +11,7 @@ import spacy
 #Run the following code below on Terminal
 # $python -m spacy download en_core_web_sm
 #from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
-from autocorrect import Speller
+
 import spacy
 nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
