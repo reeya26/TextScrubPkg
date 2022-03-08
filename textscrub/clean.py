@@ -88,28 +88,38 @@ def homog_lev(obj, eps=1, min_samples=2):
     Returns:
         dataframe(str) -- text clean from multiple instances of same value
     """
-    name = obj.name
 
-    original = obj.copy()
-    obj = obj.drop_duplicates()
-    data = obj.tolist()
+    def homog_lev_series(obj, eps=eps, min_samples=min_samples):
+        name = obj.name
 
-    def lev_metric(x, y):
-        i, j = int(x[0]), int(y[0])
-        return Levenshtein.distance(data[i], data[j])
+        original = obj.copy()
+        obj = obj.drop_duplicates()
+        data = obj.tolist()
 
-    X = np.arange(len(data)).reshape(-1, 1)
-    labels = dbscan(X, metric=lev_metric, eps=eps, min_samples=min_samples)[1]
+        def lev_metric(x, y):
+            i, j = int(x[0]), int(y[0])
+            return Levenshtein.distance(data[i], data[j])
 
-    x = pd.DataFrame({'A': obj.reset_index(drop=True), 'B': pd.Series(labels)})
-    y = x.drop_duplicates('B')
-    y = y[~(y.B==-1)]
-    y.columns = ['C', 'B']
-    x = x.merge(y, on='B', how='left')
-    x['C'] = np.where(x.C.isnull(), x.A, x.C)
+        X = np.arange(len(data)).reshape(-1, 1)
+        labels = dbscan(X, metric=lev_metric, eps=eps, min_samples=min_samples)[1]
 
-    results = pd.DataFrame({'A': original})
-    results = results.merge(x[['A', 'C']], on='A', how='left')
-    out = results.C.rename(name)
+        x = pd.DataFrame({'A': obj.reset_index(drop=True), 'B': pd.Series(labels)})
+        y = x.drop_duplicates('B')
+        y = y[~(y.B==-1)]
+        y.columns = ['C', 'B']
+        x = x.merge(y, on='B', how='left')
+        x['C'] = np.where(x.C.isnull(), x.A, x.C)
+
+        results = pd.DataFrame({'A': original})
+        results = results.merge(x[['A', 'C']], on='A', how='left')
+        out = results.C.rename(name)
         
-    return out
+        return out
+
+    if isinstance(obj, pd.DataFrame):
+        for col in obj.columns:
+            obj['{}'.format(col)] = homog_lev_series(obj['{}'.format(col)])
+    else:
+        obj = homog_lev_series(obj)
+
+    return obj
