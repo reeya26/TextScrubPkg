@@ -2,6 +2,8 @@ import unicodedata
 import regex as re
 import sys
 
+from string import punctuation
+
 import numpy as np
 import pandas as pd
 import Levenshtein
@@ -77,6 +79,19 @@ def remove_hyperlinks(text):
         text(str) -- text clean from hyperlinks
     """
     text = re.sub(r'https?://\S+', '', text)
+
+    return text
+
+def remove_punctuation(text):
+    """
+    Remove all punctuations from the raw text
+    Args:
+        text(str) -- raw text
+    Returns:
+        text(str) -- text clean from punctuation
+    """
+
+    text = re.sub(f"[{re.escape(punctuation)}]", "", text)
 
     return text
 

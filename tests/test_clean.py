@@ -3,6 +3,7 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from textscrub import clean
 import unittest
+import pandas as pd
 
 
 class TestingBasicCleaning(unittest.TestCase):
@@ -46,6 +47,24 @@ class TestingBasicCleaning(unittest.TestCase):
 
         clean_text = clean.remove_spaces(unclean_text)       
         self.assertEqual(clean_text, expected_string, mssg)
+
+    def test_remove_punctuation(self):
+
+        unclean_text = "A lot of !!!! .... ,,,, ;;;;;;;?????"
+        expected_string = "A lot of"
+
+        mssg = 'Values are not equal'
+
+        clean_text = clean.remove_punctuation(unclean_text)
+        self.assertEqual(clean_text, expected_string, mssg)
+
+    def test_homog_level(self):
+
+        data = ['CVS Pharmacy', 'cvs', 'cvs pharmacy', 'bartell']
+        df = pd.DataFrame(data, columns=['Pharmacy'])
+
+        series = clean.homog_lev(df['Pharmacy'])
+        print(series)
 
 if __name__ == '__main__':
     unittest.main()
