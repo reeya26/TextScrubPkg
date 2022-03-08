@@ -3,7 +3,7 @@
 import nltk
 
 #Libraries for Work Tokenization
-nltk.download('punkt')
+
 from nltk.tokenize import word_tokenize
 
 #Libraries for Stop Word Removal
@@ -13,7 +13,7 @@ import spacy
 #from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 
 import spacy
-nltk.download('wordnet')
+
 from nltk.stem import WordNetLemmatizer
 
 #Libraries for Working with Emojis
@@ -86,7 +86,7 @@ def acronym_expansion(text):
   sentences = [sent.text.strip() for sent in doc.sents]
   print(sentences)
 
-def remove_emoji(string):
+def remove_emoji(string, op):
   """ 
   Returns the string without the emojis and also the
   string with text translation of the emoji as a tuple
@@ -100,7 +100,10 @@ def remove_emoji(string):
                            u"\U000024C2-\U0001F251"
                            "]+", flags=re.UNICODE)
   
-  return (emoji_pattern.sub(r'', string), emoji.demojize(string))
+  if(op == "Remove"):
+    return emoji_pattern.sub(r'', string)
+  else:
+    return emoji.demojize(string)
 
 
 def lemmat(text):
