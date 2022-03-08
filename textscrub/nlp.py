@@ -21,6 +21,7 @@ from emoji.core import demojize
 import re
 import emoji
 
+import emoticons
 
 """
     Data Preprocessing Required for NLP Tasks
@@ -86,7 +87,7 @@ def acronym_expansion(text):
   sentences = [sent.text.strip() for sent in doc.sents]
   print(sentences)
 
-def remove_emoji(string, op):
+def remove_emoji(text, op):
   """ 
   Returns the string without the emojis and also the
   string with text translation of the emoji as a tuple
@@ -99,12 +100,18 @@ def remove_emoji(string, op):
                            u"\U00002702-\U000027B0"
                            u"\U000024C2-\U0001F251"
                            "]+", flags=re.UNICODE)
-  
+
+  emoticon_pattern1 = re.compile(u'(' + u'|'.join(k for k in emoticons.emoticons_dict) + u')')
+  ans = emoticon_pattern1.sub(r'', text)
+
+
+
+
   if(op == "Remove"):
-    return emoji_pattern.sub(r'', string)
+    return ans.sub(r'', text)
    
   else:
-    ans = emoji.demojize(string)
+    ans = ans.demojize(text)
     return ans.replace("_", " ")
 
 

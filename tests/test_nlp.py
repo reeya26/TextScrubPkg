@@ -9,7 +9,7 @@ class TestingNLPCleaning(unittest.TestCase):
 
     def test_convert_emoji(self):
 
-        a = 'I’m convinced that😭😭😭 is the most expressive emoji combo '
+        a = 'I’m convinced that😭😭😭 is the most :)expressive emoji combo '
         b = 'I’m convinced that is the most expressive emoji combo '
 
         mssg =  'Values are not equal'

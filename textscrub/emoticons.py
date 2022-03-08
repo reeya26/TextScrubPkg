@@ -1,5 +1,6 @@
-# Thanks : https://github.com/NeelShah18/emot/blob/master/emot/emo_unicode.py
-EMOTICONS = {
+# Source : https://github.com/NeelShah18/emot/blob/master/emot/emo_unicode.py
+
+emoticons_dict = {
     u":‑\)":"Happy face or smiley",
     u":\)":"Happy face or smiley",
     u":-\]":"Happy face or smiley",
