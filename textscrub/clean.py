@@ -12,7 +12,7 @@ def remove_glyphs(text):
     """
 
     # remove non - ascii characters
-    text = text.unicodedata.normalize("NFKD", text)
+    text = unicodedata.normalize("NFKD", text)
     text = re.sub(r'[\x00-\x7F]+', '', text)
 
     # remove accents
