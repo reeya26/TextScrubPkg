@@ -1,8 +1,9 @@
 # Text-Scrubbing-Package
-A text cleaning package which also works on fuzzy logic
+
+TextScrub is a text-cleaning package which prevents you from spending long hours cleaning web scrapped data, either to prepare for a presentation or for NLP projects.
 
 
-Testing a few things.
+## Project Organization
 
 ```
 TextScrubPkg/
@@ -24,3 +25,10 @@ TextScrubPkg/
   |- requirements.txt
   |- LICENSE
 ```
+
+## Users
+
+- **Analysts**: Requiring quick data-cleaning functionalities, and who are not technically adept
+- **Data Scientists**: Programmers wanting to clean web-scrapped data. Focus on experimenting with model-building instead of scrubbing
+
+
