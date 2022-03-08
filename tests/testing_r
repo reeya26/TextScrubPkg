@@ -1,8 +1,0 @@
-import textscrub
-
-
-
-text = "Hello People## of the world.      HOW ART THOU"
-
-ans = clean.remove_spaces(text)
-print(ans)
