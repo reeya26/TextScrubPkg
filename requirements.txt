@@ -2,3 +2,4 @@ emoji-1.6.3
 autocorrect-2.6.1
 nltk-3.2.5
 spacy-2.2.4
+python>=3.5
