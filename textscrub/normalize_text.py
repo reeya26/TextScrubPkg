@@ -43,8 +43,6 @@ def normalize_text(
         text = clean.remove_punctuation(text)
     if remove_spaces:
         text = clean.remove_spaces(text)
-    if tokenizing:
-        text = nlp.tokenizing(text)
     if stopwords_removal:
         text = nlp.stopword_removal(text)
     if lemmat(text):
@@ -53,5 +51,7 @@ def normalize_text(
         text = nlp.remove_emoji(text)
     if replace_emojis:
         text = nlp.remove_emoji(text, "replace" )
+    if tokenizing:
+        text = nlp.tokenizing(text)
 
     return text
