@@ -27,5 +27,9 @@ class TestingBasicCleaning(unittest.TestCase):
         clean_text = clean.remove_glyphs(a)       
         self.assertEqual(clean_text, b, mssg)
 
+    def test_remove_spaces(self):
+
+        a = 
+
 if __name__ == '__main__':
     unittest.main()
