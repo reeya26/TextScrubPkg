@@ -97,15 +97,15 @@ def remove_punctuation(text):
 
 """
 def homog_lev(obj, eps=1, min_samples=2):
-    """
-    """
+    
+    
     Remove all hyperlinks and URLs from the raw text
     Args:
         dataframe(str) -- almost similar text
     Returns:
         dataframe(str) -- text clean from multiple instances of same value
-    """
-    """
+    
+    
 
     def homog_lev_series(obj, eps=eps, min_samples=min_samples):
         name = obj.name
