@@ -3,29 +3,68 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from textscrub import clean
 import unittest
+import pandas as pd
 
 
 class TestingBasicCleaning(unittest.TestCase):
 
     def test_remove_hyperlinks(self):
 
-        a = 'this line contains hyperlink - https://google.com/'
-        b = 'this line contains hyperlink - '
+        unclean_text = 'this line contains hyperlink - https://google.com/'
+        expected_string = 'this line contains hyperlink - '
 
         mssg =  'Values are not equal'
 
-        clean_text = clean.remove_hyperlinks(a)
-        self.assertEqual(clean_text, b, mssg)
+        clean_text = clean.remove_hyperlinks(unclean_text)
+        self.assertEqual(clean_text, expected_string, mssg)
 
     def test_remove_glyphs(self):
 
-        a = '\x00\x01string'
-        b = 'string'
+        unclean_text = '\x00 ß string'
+        expected_string = 'string'
 
         mssg = 'Values are not equal'
 
-        clean_text = clean.remove_glyphs(a)       
-        self.assertEqual(clean_text, b, mssg)
+        clean_text = clean.remove_glyphs(unclean_text)       
+        self.assertEqual(clean_text, expected_string, mssg)
+
+    def test_remove_html_tags(self):
+
+        unclean_text = """<body><div>This is a sample text with <b>lots of tags</b></div><br/></body>"""
+        expected_string = "This is a sample text with lots of tags"
+
+        mssg = 'Values are not equal'
+
+        clean_text = clean.remove_html_tags(unclean_text)       
+        self.assertEqual(clean_text, expected_string, mssg)
+
+    def test_remove_spaces(self):
+
+        unclean_text = "This is a   sample text with lots of    spaces\n."
+        expected_string = "This is a sample text with lots of spaces."
+
+        mssg = 'Values are not equal'
+
+        clean_text = clean.remove_spaces(unclean_text)       
+        self.assertEqual(clean_text, expected_string, mssg)
+
+    def test_remove_punctuation(self):
+
+        unclean_text = "A lot of !!!! .... ,,,, ;;;;;;;?????"
+        expected_string = "A lot of"
+
+        mssg = 'Values are not equal'
+
+        clean_text = clean.remove_punctuation(unclean_text)
+        self.assertEqual(clean_text, expected_string, mssg)
+
+    def test_homog_level(self):
+
+        data = ['CVS Pharmacy', 'cvs', 'cvs pharmacy', 'bartell']
+        df = pd.DataFrame(data, columns=['Pharmacy'])
+
+        series = clean.homog_lev(df['Pharmacy'])
+        print(series)
 
 if __name__ == '__main__':
     unittest.main()
