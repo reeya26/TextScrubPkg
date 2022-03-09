@@ -38,6 +38,6 @@ TextScrubPkg/
 
 ## How to Use
 
-To test the functionalities of the package, refer to the Python notebook
+To test the functionalities of the package, refer to the [Python notebook](https://github.com/reeya26/TextScrubPkg/blob/main/examples/example.ipynb)
 
 ## Examples
