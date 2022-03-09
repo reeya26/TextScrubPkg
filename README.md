@@ -12,10 +12,9 @@ TextScrubPkg/
     |- __init__.py
     |- clean.py
     |- nlp.py
-    |- emoticons.py
-    |- emoticons_dataset.txt
   |- docs/
     |- index.rst
+    |- textimage.png
   |- tests/
     |- test_clean.py
     |- test_nlp.py
