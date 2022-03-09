@@ -10,7 +10,8 @@ TextScrub is a text-cleaning package which prevents you from spending long hours
 
 ```
 TextScrubPkg/
-  |- README.md
+  |- examples
+    |-example.ipynb
   |- textscrub/
     |- __init__.py
     |- clean.py
@@ -25,10 +26,10 @@ TextScrubPkg/
     |- test_nlp.py
     |- testing_dataset.csv
     |- testing_normalize.py
-    |- testing_main.py
   |- setup.py
   |- requirements.txt
   |- LICENSE
+  |- README.md
 ```
 
 ## Users
