@@ -91,7 +91,8 @@ def remove_punctuation(text):
         text(str) -- text clean from punctuation
     """
 
-    text = re.sub(f"[{re.escape(punctuation)}]", "", text)
+    #text = re.sub(f"[{re.escape(punctuation)}]", "", text)
+    text = re.sub('[%s]' % re.escape(punctuation), '', text)
 
     return text
 
