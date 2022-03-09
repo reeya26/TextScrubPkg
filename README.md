@@ -2,6 +2,9 @@
 
 TextScrub is a text-cleaning package which prevents you from spending long hours cleaning web scrapped data, either to prepare for a presentation or for NLP projects.
 
+<p align="center">
+  <img  src="https://github.com/reeya26/TextScrubPkg/blob/main/docs/textimage.png">
+</p>
 
 ## Project Organization
 
