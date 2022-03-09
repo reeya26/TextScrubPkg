@@ -94,7 +94,7 @@ def acronym_expansion(text):
   sentences = [sent.text.strip() for sent in doc.sents]
   print(sentences)
 
-def remove_emoji(text, op):
+def remove_emoji(text, op = "remove"):
   """ 
   Returns the string without the emojis and also the
   string with text translation of the emoji as a tuple
@@ -110,23 +110,13 @@ def remove_emoji(text, op):
                            u"\U000024C2-\U0001F251"
                            "]+", flags=re.UNICODE)
 
-  #Identifying Emoticons present in Data
-  with open('emoticons_dataset.txt') as f:
-    data = f.read()
-  emoticons = json.loads(data)
-
-  emoticon_pattern1 = re.compile(u'(' + u'|'.join(k for k in emoticons) + u')')
-  ans = emoticon_pattern1.sub(r'', text)
-
-
-
-
-  if(op == "Remove"):
-    return ans.sub(r'', text)
-   
+  if(op == "replace"):
+   ans = emoji.demojize(text)
+   ans = ans.replace(":", "")
+   return ans.replace("_", " ")
+ 
   else:
-    ans = ans.demojize(text)
-    return ans.replace("_", " ")
+   return emoji_pattern.sub(r'', text)
 
 
 def lemmat(text):

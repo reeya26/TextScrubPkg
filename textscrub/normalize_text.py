@@ -45,10 +45,10 @@ def normalize_text(
         text = clean.remove_spaces(text)
     if stopwords_removal:
         text = nlp.stopword_removal(text)
-    if lemmat(text):
+    if lemmat:
         text = nlp.lemmat(text)
     if remove_emojis:
-        text = nlp.remove_emoji(text)
+        text = nlp.remove_emoji(text, "remove")
     if replace_emojis:
         text = nlp.remove_emoji(text, "replace" )
     if tokenizing:
