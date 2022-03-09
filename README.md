@@ -12,13 +12,16 @@ TextScrubPkg/
     |- __init__.py
     |- clean.py
     |- nlp.py
+    |- normalize_text.py
   |- docs/
-    |- index.rst
+    |- index.md
     |- textimage.png
   |- tests/
+    |- __init__.py
     |- test_clean.py
     |- test_nlp.py
     |- testing_dataset.csv
+    |- testing_normalize.py
     |- testing_main.py
   |- setup.py
   |- requirements.txt
