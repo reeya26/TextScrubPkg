@@ -1,5 +1,15 @@
 # Text-Scrubbing-Package
 
+[![Build Status](https://travis-ci.org/reeya26/TextScrubPkg.svg?branch=master)](https://travis-ci.org/reeya26/TextScrubPkg) 
+[![Coverage Status](https://coveralls.io/repos/github/reeya26/TextScrubPkg/badge.svg?branch=master)](https://coveralls.io/github/reeya26/TextScrubPkg?branch=master) 
+![Language](https://img.shields.io/badge/language-python-blue.svg)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com//reeya26/TextScrubPkg/blob/master/LICENSE)
+![contributors](https://img.shields.io/github/contributors/reeya26/TextScrubPkg.svg) 
+![codesize](https://img.shields.io/github/languages/code-size/reeya26/TextScrubPkg.svg) 
+![pullrequests](https://img.shields.io/github/issues-pr/reeya26/TextScrubPkg.svg) 
+![closedpullrequests](https://img.shields.io/github/issues-pr-closed-raw/reeya26/TextScrubPkg.svg)
+
+
 TextScrub is a text-cleaning package which prevents you from spending long hours cleaning web scrapped data, either to prepare for a presentation or for NLP projects.
 
 <p align="center">
