@@ -94,10 +94,11 @@ def remove_punctuation(text):
 
     #text = re.sub(f"[{re.escape(punctuation)}]", "", text)
     text = re.sub('[%s]' % re.escape(punctuation), '', text)
+    text = remove_spaces(text)
 
     return text
 
-def homog_lev(obj, eps=1, min_samples=2):
+def homogenize_column(obj, eps=1, min_samples=2):
     
     """
     Remove all hyperlinks and URLs from the raw text

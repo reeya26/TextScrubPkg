@@ -1,6 +1,4 @@
 import sys,os
-
-from sqlalchemy import false
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from textscrub import normalize_text
