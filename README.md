@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/reeya26/TextScrubPkg.svg?branch=master)](https://travis-ci.org/reeya26/TextScrubPkg) 
 [![Coverage Status](https://coveralls.io/repos/github/reeya26/TextScrubPkg/badge.svg?branch=master)](https://coveralls.io/github/reeya26/TextScrubPkg?branch=master) 
+![Language](https://img.shields.io/badge/language-python-blue.svg)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com//reeya26/TextScrubPkg/blob/master/LICENSE)
 ![contributors](https://img.shields.io/github/contributors/reeya26/TextScrubPkg.svg) 
 ![codesize](https://img.shields.io/github/languages/code-size/reeya26/TextScrubPkg.svg) 
