@@ -1,28 +1,30 @@
-import sys,os
+from textscrub import clean, nlp
+import sys
+import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from textscrub import clean, nlp
 
 # final function
 def normalize_text(
     text,
-    remove_glyphs = True,
-    remove_html_tags = True,
-    remove_hyperlinks = True,
-    remove_punctuation = True,
-    remove_spaces = True,
-    tokenizing = True,
-    stopwords_removal = True,
-    lemmat = True,
-    remove_emojis = True,
-    replace_emojis = True
+    remove_glyphs=True,
+    remove_html_tags=True,
+    remove_hyperlinks=True,
+    remove_punctuation=True,
+    remove_spaces=True,
+    tokenizing=True,
+    stopwords_removal=True,
+    lemmat=True,
+    remove_emojis=True,
+    replace_emojis=True
 ):
     """
-    Normalize various aspects of a raw text. A convenience function for applying all other preprocessing functions in one go.
+    Normalize various aspects of a raw text.
+    A convenience function for applying all preprocessing functions in one go.
     Args:
         text(str) -- raw text to preprocess
-        remove_glyphs(bool) -- it True, remove the non-ascii characters, non-printable characters, non-latin characters, accents.
-
+        remove_glyphs(bool) -- if True, remove the non-ascii characters,
+        non-printable characters, non-latin characters, accents.
 
     Returns:
         str -- prerocessed text.
@@ -50,7 +52,7 @@ def normalize_text(
     if remove_emojis:
         text = nlp.remove_emoji(text, "remove")
     if replace_emojis:
-        text = nlp.remove_emoji(text, "replace" )
+        text = nlp.remove_emoji(text, "replace")
     if tokenizing:
         text = nlp.tokenizing(text)
 
