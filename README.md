@@ -9,14 +9,16 @@
 ![pullrequests](https://img.shields.io/github/issues-pr/reeya26/TextScrubPkg.svg) 
 ![closedpullrequests](https://img.shields.io/github/issues-pr-closed-raw/reeya26/TextScrubPkg.svg)
 
-
-TextScrub is a text-cleaning package which prevents you from spending long hours cleaning web scrapped data, either to prepare for a presentation or for NLP projects.
-
 <p align="center">
   <img  src="https://github.com/reeya26/TextScrubPkg/blob/main/docs/textimage.png">
 </p>
 
+## Introduction
+TextScrub is a text-cleaning package which prevents you from spending long hours cleaning web scrapped data, either to prepare for a presentation or for NLP projects.
+
 ## Project Organization
+
+This package has the following structure.
 
 ```
 TextScrubPkg/
