@@ -12,20 +12,22 @@ import Levenshtein
 
 def remove_glyphs(text):
     """
-    Remove all the non-ascii, non-latin and non-printable characters from the raw text
+    Remove all the non-ascii, non-latin and non-printable characters
+    from the raw text
     Args:
         text(str) -- raw text
     Returns:
-        text(str) -- text clean from non ascii, non-latin and non-printable characters
+        text(str) -- text clean from non ascii, non-latin and
+                    non-printable characters
     """
 
     # remove non - ascii characters
     text = unicodedata.normalize("NFKD", text)
-    text = re.sub(r'[^\x00-\x7F]+','', text)
+    text = re.sub(r'[^\x00-\x7F]+', '', text)
 
     # remove accents
     text = unicodedata.normalize('NFD', text).encode('ascii', 'ignore').decode("utf-8")
-    
+
     # Get all unicode characters
     all_chars = (chr(i) for i in range(sys.maxunicode))
     # Get all non printable characters
@@ -40,6 +42,7 @@ def remove_glyphs(text):
 
     return text
 
+
 def remove_spaces(text):
     """
     Remove all the tabs, spaces, and line breaks from the raw text
@@ -49,11 +52,12 @@ def remove_spaces(text):
         text(str) -- text clean from tabs, and spaces
     """
     # remove \t, \n, \r
-    text = text.replace("\t", "").replace("\r", "").replace("\n","") 
+    text = text.replace("\t", "").replace("\r", "").replace("\n", "")
     # remove 2 or more than 2 spaces
     text = re.sub('\s{2,}', " ", text)
 
     return text
+
 
 def remove_html_tags(text):
     """
@@ -71,6 +75,7 @@ def remove_html_tags(text):
 
     return text
 
+
 def remove_hyperlinks(text):
     """
     Remove all hyperlinks and URLs from the raw text
@@ -83,6 +88,7 @@ def remove_hyperlinks(text):
 
     return text
 
+
 def remove_punctuation(text):
     """
     Remove all punctuations from the raw text
@@ -92,14 +98,14 @@ def remove_punctuation(text):
         text(str) -- text clean from punctuation
     """
 
-    #text = re.sub(f"[{re.escape(punctuation)}]", "", text)
     text = re.sub('[%s]' % re.escape(punctuation), '', text)
     text = remove_spaces(text)
 
     return text
 
+
 def homogenize_column(obj, eps=1, min_samples=2):
-    
+
     """
     Remove all hyperlinks and URLs from the raw text
     Args:
@@ -107,7 +113,6 @@ def homogenize_column(obj, eps=1, min_samples=2):
     Returns:
         dataframe(str) -- text clean from multiple instances of same value
     """
-    
 
     def homog_lev_series(obj, eps=eps, min_samples=min_samples):
         name = obj.name
@@ -125,7 +130,7 @@ def homogenize_column(obj, eps=1, min_samples=2):
 
         x = pd.DataFrame({'A': obj.reset_index(drop=True), 'B': pd.Series(labels)})
         y = x.drop_duplicates('B')
-        y = y[~(y.B==-1)]
+        y = y[~(y.B == -1)]
         y.columns = ['C', 'B']
         x = x.merge(y, on='B', how='left')
         x['C'] = np.where(x.C.isnull(), x.A, x.C)
@@ -133,7 +138,7 @@ def homogenize_column(obj, eps=1, min_samples=2):
         results = pd.DataFrame({'A': original})
         results = results.merge(x[['A', 'C']], on='A', how='left')
         out = results.C.rename(name)
-        
+
         return out
 
     if isinstance(obj, pd.DataFrame):
