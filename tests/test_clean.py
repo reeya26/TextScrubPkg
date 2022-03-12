@@ -1,13 +1,11 @@
 # importing required packages
-import sys,os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from textscrub import clean
-
 import unittest
-from pandas.testing import assert_frame_equal
-
 import pandas as pd
+
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 class TestingBasicCleaning(unittest.TestCase):
@@ -16,21 +14,20 @@ class TestingBasicCleaning(unittest.TestCase):
 
         non_uniform_df = pd.DataFrame(['CVS Pharmacy', 'cvs', 'Bartell Drugs', 'cvs pharmcy', 'bartell', 'Cvs Pharmacy', 'cvs', 'bartell drug'], columns=['Pharmacy'])
         expected_uniform_df = pd.DataFrame(['CVS Pharmacy', 'cvs', 'Bartell Drugs', 'CVS Pharmacy', 'bartell', 'CVS Pharmacy', 'cvs', 'Bartell Drugs'], columns=['Pharmacy'])
-        
+
         clean_series = clean.homogenize_column(non_uniform_df['Pharmacy'], eps=3)
-        clean_df = clean_series.to_frame(name = 'Pharmacy')
+        clean_df = clean_series.to_frame(name='Pharmacy')
 
-        mssg =  'Values are not equal'
+        mssg = 'Values are not equal'
 
-        self.assertEqual(True, clean_df.equals(expected_uniform_df))
-
+        self.assertEqual(True, clean_df.equals(expected_uniform_df), mssg)
 
     def test_remove_hyperlinks(self):
 
         unclean_text = 'this line contains hyperlink - https://google.com/'
         expected_string = 'this line contains hyperlink - '
 
-        mssg =  'Values are not equal'
+        mssg = 'Values are not equal'
 
         clean_text = clean.remove_hyperlinks(unclean_text)
         self.assertEqual(clean_text, expected_string, mssg)
@@ -42,7 +39,7 @@ class TestingBasicCleaning(unittest.TestCase):
 
         mssg = 'Values are not equal'
 
-        clean_text = clean.remove_glyphs(unclean_text)       
+        clean_text = clean.remove_glyphs(unclean_text)
         self.assertEqual(clean_text, expected_string, mssg)
 
     def test_remove_html_tags(self):
@@ -52,7 +49,7 @@ class TestingBasicCleaning(unittest.TestCase):
 
         mssg = 'Values are not equal'
 
-        clean_text = clean.remove_html_tags(unclean_text)       
+        clean_text = clean.remove_html_tags(unclean_text)
         self.assertEqual(clean_text, expected_string, mssg)
 
     def test_remove_spaces(self):
@@ -62,7 +59,7 @@ class TestingBasicCleaning(unittest.TestCase):
 
         mssg = 'Values are not equal'
 
-        clean_text = clean.remove_spaces(unclean_text)       
+        clean_text = clean.remove_spaces(unclean_text)
         self.assertEqual(clean_text, expected_string, mssg)
 
     def test_remove_punctuation(self):
