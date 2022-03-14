@@ -1,18 +1,9 @@
-emoji == 1.6.3
-#unicodedata
-regex == 2022.3.2
-nltk == 3.2.5
-string
-pandas
-numpy
-sklearn
-wheels
-Levenshtein
-python-Levenshtein
-spacy>=2.2.0,<3.0.0
-https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-2.2.0/en_core_web_sm-2.2.0.tar.gz#egg=en_core_web_sm
-
-create new env
-install each package
-free env variable then output it to requirements.txt
-pip freeze > requirements.txt
+emoji==1.6.3
+nltk==3.7
+numpy==1.22.3
+pandas==1.4.1
+python_Levenshtein==0.12.2
+regex==2022.3.2
+scikit_learn==1.0.2
+setuptools==60.9.3
+spacy==3.2.3
