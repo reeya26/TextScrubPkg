@@ -60,22 +60,22 @@ This package provides two main task specific fucntions:
 1. Basic Cleaning for Data Analyis
 2. Advanced Cleaning for NLP related tasks
 
-For cleaning the data call the `textscrub.normalize_text.normalize_text(*your text*)` function. The function parameters defined are as follows:
+For cleaning the data call the `textscrub.normalize_text.normalize_text(your text)` function. The function parameters defined are as follows:
 
-1. *remove_glyphs* - Removes non-ascii characters, non-printable charaters, accents, and non-latin characters
-2. *remove_spaces* - Remove Extra Spaces, including tabs and line breaks
-3. *remove_html_tags* - Remove HTML tags
-4. *remove_hyperlinks* - Remove hyperlinks
-5. *remove_punctuation* - Remove Puntuation
-6. *tokenizing* - Tokenization
-7. *stopwords_removal* - Remove Stopwords
-8. *lemmat* - Perform Lemmatization
-9. *replace_emojis* - Replace emojis
-10. *remove_emojis* - Remove emojis
+1. ***remove_glyphs*** - Removes non-ascii characters, non-printable charaters, accents, and non-latin characters
+2. ***remove_spaces*** - Remove Extra Spaces, including tabs and line breaks
+3. ***remove_html_tags*** - Remove HTML tags
+4. ***remove_hyperlinks*** - Remove hyperlinks
+5. ***remove_punctuation*** - Remove Puntuation
+6. ***tokenizing*** - Tokenization
+7. ***stopwords_removal*** - Remove Stopwords
+8. ***lemmat*** - Perform Lemmatization
+9. ***replace_emojis*** - Replace emojis
+10. ***remove_emojis*** - Remove emojis
 
 By default these parameters are true. If you do not require them, then you can set is as *False*.
 
-Apart from this we can normalize a string column as well. To do this, call `textscrub.clean.homogenize_column(*col_name*)` from the textscrub package.
+Apart from this we can normalize a string column as well. To do this, call `textscrub.clean.homogenize_column(col_name)` from the textscrub package.
 
 ## How to Use
 
