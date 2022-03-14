@@ -12,10 +12,19 @@ class TestingBasicCleaning(unittest.TestCase):
 
     def test_homogenize_column(self):
 
-        non_uniform_df = pd.DataFrame(['CVS Pharmacy', 'cvs', 'Bartell Drugs', 'cvs pharmcy', 'bartell', 'Cvs Pharmacy', 'cvs', 'bartell drug'], columns=['Pharmacy'])
-        expected_uniform_df = pd.DataFrame(['CVS Pharmacy', 'cvs', 'Bartell Drugs', 'CVS Pharmacy', 'bartell', 'CVS Pharmacy', 'cvs', 'Bartell Drugs'], columns=['Pharmacy'])
+        non_uniform_df = pd.DataFrame(['CVS Pharmacy', 'cvs',
+                                       'Bartell Drugs', 'cvs pharmcy',
+                                       'bartell', 'Cvs Pharmacy',
+                                       'cvs', 'bartell drug'],
+                                       columns=['Pharmacy'])
+        expected_uniform_df = pd.DataFrame(['CVS Pharmacy', 'cvs',
+                                            'Bartell Drugs', 'CVS Pharmacy',
+                                            'bartell', 'CVS Pharmacy',
+                                            'cvs', 'Bartell Drugs'],
+                                           columns=['Pharmacy'])
 
-        clean_series = clean.homogenize_column(non_uniform_df['Pharmacy'], eps=3)
+        clean_series = clean.homogenize_column(non_uniform_df['Pharmacy'],
+                                               eps=3)
         clean_df = clean_series.to_frame(name='Pharmacy')
 
         mssg = 'Values are not equal'
@@ -44,7 +53,8 @@ class TestingBasicCleaning(unittest.TestCase):
 
     def test_remove_html_tags(self):
 
-        unclean_text = """<body><div>This is a sample text with <b>lots of tags</b></div><br/></body>"""
+        unclean_text = """<body><div>This is a sample text with
+                       <b>lots of tags</b></div><br/></body>"""
         expected_string = "This is a sample text with lots of tags"
 
         mssg = 'Values are not equal'

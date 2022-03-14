@@ -31,7 +31,8 @@ def remove_glyphs(text):
     # Get all unicode characters
     all_chars = (chr(i) for i in range(sys.maxunicode))
     # Get all non printable characters
-    control_chars = ''.join(c for c in all_chars if unicodedata.category(c) == 'Cc')
+    control_chars = ''.join(c for c in all_chars
+                            if unicodedata.category(c) == 'Cc')
     # Create regex of above characters
     control_char_re = re.compile('[%s]' % re.escape(control_chars))
     # remove non-printable characters
@@ -54,7 +55,7 @@ def remove_spaces(text):
     # remove \t, \n, \r
     text = text.replace("\t", "").replace("\r", "").replace("\n", "")
     # remove 2 or more than 2 spaces
-    text = re.sub('\s{2,}', " ", text)
+    text = re.sub('\s{2,}', '', text)
 
     return text
 
@@ -126,9 +127,11 @@ def homogenize_column(obj, eps=1, min_samples=2):
             return Levenshtein.distance(data[i], data[j])
 
         X = np.arange(len(data)).reshape(-1, 1)
-        labels = dbscan(X, metric=lev_metric, eps=eps, min_samples=min_samples)[1]
+        labels = dbscan(X, metric=lev_metric, eps=eps,
+                        min_samples=min_samples)[1]
 
-        x = pd.DataFrame({'A': obj.reset_index(drop=True), 'B': pd.Series(labels)})
+        x = pd.DataFrame({'A': obj.reset_index(drop=True),
+                          'B': pd.Series(labels)})
         y = x.drop_duplicates('B')
         y = y[~(y.B == -1)]
         y.columns = ['C', 'B']

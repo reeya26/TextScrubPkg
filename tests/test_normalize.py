@@ -16,16 +16,16 @@ class TestingNormalize(unittest.TestCase):
         mssg = 'Values are not equal'
 
         clean_text = normalize_text.normalize_text(a,
-                                                remove_glyphs=True,
-                                                remove_html_tags=False,
-                                                remove_hyperlinks=False,
-                                                remove_punctuation=False,
-                                                remove_spaces=True,
-                                                tokenizing=True,
-                                                stopwords_removal=False,
-                                                lemmat=False,
-                                                remove_emojis=True,
-                                                replace_emojis=False)
+                                                   remove_glyphs=True,
+                                                   remove_html_tags=False,
+                                                   remove_hyperlinks=False,
+                                                   remove_punctuation=False,
+                                                   remove_spaces=True,
+                                                   tokenizing=True,
+                                                   stopwords_removal=False,
+                                                   lemmat=False,
+                                                   remove_emojis=True,
+                                                   replace_emojis=False)
         self.assertEqual(clean_text, b, mssg)
 
 
