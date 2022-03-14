@@ -14,7 +14,12 @@
 </p>
 
 ## Introduction
-TextScrub is a text-cleaning package which prevents you from spending long hours cleaning web scrapped data, either to prepare for a presentation or for NLP projects.
+TextScrub is a text-cleaning package which prevents you from spending long hours cleaning web scrapped data, either to prepare for a presentation or for NLP projects. The user can run single line of code to clean the textual data.
+
+## Resources Used
+- Editor used: VS code
+- Python version: 3.9.4
+- Packages used: unicodedata, sys, os, regex, string, numpy, pandas, sklearn, levenshtein, spacy, nltk, emoji
 
 ## Project Organization
 
@@ -48,6 +53,29 @@ TextScrubPkg/
 
 - **Analysts**: Requiring quick data-cleaning functionalities, and who are not technically adept
 - **Data Scientists**: Programmers wanting to clean web-scrapped data. Focus on experimenting with model-building instead of scrubbing
+
+## Function Description
+
+This package provides two main task specific fucntions:
+1. Basic Cleaning for Data Analyis
+2. Advanced Cleaning for NLP related tasks
+
+For cleaning the data call the `textscrub.normalize_text.normalize_text(*your text*)` function. The function parameters defined are as follows:
+
+1. *remove_glyphs* - Removes non-ascii characters, non-printable charaters, accents, and non-latin characters
+2. *remove_spaces* - Remove Extra Spaces, including tabs and line breaks
+3. *remove_html_tags* - Remove HTML tags
+4. *remove_hyperlinks* - Remove hyperlinks
+5. *remove_punctuation* - Remove Puntuation
+6. *tokenizing* - Tokenization
+7. *stopwords_removal* - Remove Stopwords
+8. *lemmat* - Perform Lemmatization
+9. *replace_emojis* - Replace emojis
+10. *remove_emojis* - Remove emojis
+
+By default these parameters are true. If you do not require them, then you can set is as *False*.
+
+Apart from this we can normalize a string column as well. To do this, call `textscrub.clean.homogenize_column(*col_name*)` from the textscrub package.
 
 ## How to Use
 
