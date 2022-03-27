@@ -7,7 +7,7 @@ setuptools.setup(
     name="textscrub",
     version="1.0.0",
     author=["Pragya Verma", "Reeya Pimple"],
-    author_email= vpragya@uw.edu, reeyapb@uw.edu,
+    author_email= "vpragya@uw.edu, reeyapb@uw.edu",
     description="Instance in an Instant",
     long_description=long_description,
     long_description_content_type="text/markdown",
